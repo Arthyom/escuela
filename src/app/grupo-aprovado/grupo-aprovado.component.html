@@ -1,6 +1,13 @@
 
-    <div *ngFor="let estudiante of Estudiantes">
-       <app-estudiante [estudiante]="estudiante"></app-estudiante>
+    <div *ngFor="let estudiante of grupoService.aprovados">
+       <app-estudiante 
+       
+       [isFromList]="false"
+       (estudianteAprobado)="grupoService.removeFromAprovados($event)" 
+       [estudiante]="estudiante">
+      
+      
+      </app-estudiante>
     </div>
 
 

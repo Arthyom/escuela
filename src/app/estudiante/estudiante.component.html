@@ -1,42 +1,3 @@
-<!-- <h1>Este es un estudiante</h1>
-
-
-<div *ngIf="!aprobado" class="alert alert-danger" role="alert">
-    <strong>Estas reprobado</strong>
-</div>
-
-
-
-<div *ngIf="aprobado" class="alert alert-success" role="alert">
-    <strong>Estas Aprobado</strong>
-</div>
-
-
-
-
-
-
-<div class="form-group">
-  <label for="">Seleccione su estado</label>
-  <input type="checkbox" (change)=" aprobado = !aprobado"
-    class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-</div>
-
-<div class="form-group">
-  <label for=""></label>
-  <input type="text" [value]="grupo"
-    class="form-control" placeholder="hola esciba algo">
-</div>
-
-<div class="form-group">
-    <label for=""></label>
-    <input type="text" [(ngModel)]="grupo" 
-      class="form-control" placeholder="hola esciba algo para ejecutar evento">
-  </div>
-
-{{grupo}} -->
-
-
 
 
 
@@ -49,17 +10,47 @@
     <div class="card-body">
 
     
-      <h2 class="card-title">{{estudiante.nombre}}</h2>
-      <img src="{{estudiante.img}}"
-      class="img-fluid" style="width: 100px; height: 100px;" alt="">
-      
+      <div class="row">
+        
+        <div class="col-12">
+          <h2 class="card-title">{{estudiante.nombre}}</h2>
+        </div>
+
+        <div class="col-9">
+          <img src="{{estudiante.img}}"
+          class="img-fluid" style="width: 100px; height: 100px;" alt="">    
+        </div>
+
+       <div class="col-1">
+        <a  class="btn btn-primary btn-block" href="#" role="button">
+          Details
+        </a>
+       </div>
+
+       <div class="col-1">
+        <a  class="btn btn-warning btn-block" href="#" role="button">
+          edit
+        </a>
+       </div>
+        
+     
+       <div class="col-1">
+        <a  class="btn btn-danger btn-block" href="#" role="button">
+          delete
+        </a>
+       </div>
+
+      </div>
+
    
-      <span *ngIf="estudiante.aprobado"   class="badge badge-primary">Aprobado</span>
-      <span *ngIf="!estudiante.aprobado" class="badge badge-danger">Reprobado</span>
+      <div *ngIf="!isFromList">
+        <span *ngIf="estudiante.aprobado"   class="badge badge-primary">Aprobado</span>
+        <span *ngIf="!estudiante.aprobado" class="badge badge-danger">Reprobado</span>
+      </div>
 
 
-      <div class="custom-control custom-switch">
-        <input [(ngModel)]="estudiante.aprobado" type="checkbox" class="custom-control-input" id="customSwitch{{estudiante.nombre}}">
+      <div *ngIf="!isFromList" class="custom-control custom-switch">
+        <input  (change)="checkChange()" [(ngModel)]="estudiante.aprobado" type="checkbox" class="custom-control-input" id="customSwitch{{estudiante.nombre}}">
         <label class="custom-control-label" for="customSwitch{{estudiante.nombre}}">{{ estudiante.aprobado ? 'Aprobado' : 'Reprobado' }}</label>
       </div>
       <p class="card-text">

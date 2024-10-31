@@ -1,0 +1,14 @@
+<h1>Todos los estudiantes</h1>
+
+<a routerLink="/Estudiantes/Create" class="btn btn-success btn-block" href="#" role="button">Nuevo</a>
+
+<app-estudiante 
+
+[isFromList]="true"
+
+[estudiante]="estudiante" 
+
+*ngFor="let estudiante of allStudents"> 
+
+
+</app-estudiante>

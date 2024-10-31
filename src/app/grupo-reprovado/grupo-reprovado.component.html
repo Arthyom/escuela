@@ -1,1 +1,15 @@
-<p>grupo-reprovado works!</p>
+
+<div *ngFor="let estudiante of grupoService.reprovados">
+    <app-estudiante 
+    [isFromList]="false"
+    
+    (estudianteAprobado)="grupoService.removeFromReprovados($event)" 
+    [estudiante]="estudiante">
+   
+   
+   </app-estudiante>
+ </div>
+
+
+
+

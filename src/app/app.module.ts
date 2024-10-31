@@ -19,7 +19,6 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule
   ],
   providers: [
-    HttpClientModule,
     GruposService
   ],
   bootstrap: [AppComponent]

@@ -1,1 +1,115 @@
-<p>create works!</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Form Template Driven</th>
+            <th>Form Reactive Driven</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td >
+
+
+                <form #templateDriven="ngForm" (ngSubmit)="enviarTemplate(templateDriven)">
+
+                    <div class="form-group">
+                      <label for="">Nombre</label>
+                      <input type="text" 
+                    
+                      required=""
+                      name="nombre"
+                      [(ngModel)]="formPlantilla.nombre"
+
+                      class="form-control" placeholder="Nombre del Alumno">
+                      <small 
+                        *ngIf="templateDriven.controls['nombre']?.invalid &&
+                        templateDriven.controls['nombre']?.touched
+                        "
+                     class="text-danger">Help text</small>
+                    </div>
+
+                    <div class="form-group">
+                          <label for="">Descripcion</label>
+                          <textarea required="" class="form-control" [(ngModel)]="formPlantilla.desc"
+                           name="desc"  rows="4"></textarea>
+                      <small id="helpId" class="text-danger"
+                      *ngIf="templateDriven.controls['desc']?.invalid 
+                        &&
+                        templateDriven.controls['desc']?.touched
+                      "
+                      >Help text</small>
+                    </div>
+
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input  
+                        [(ngModel)]="formPlantilla.aprobado"
+                        type="checkbox" class="form-check-input" name="aprobado"
+                         >
+                        Aprobado
+                      </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block ">Enviar</button>
+
+                </form>
+
+                {{formPlantilla | json}}
+
+            </td>
+            <td>
+
+                <form [formGroup]="formReactivo" (ngSubmit)="enviarReactivo()">
+
+                    <div class="form-group">
+                      <label for="">Nombre</label>
+                      <input type="text" 
+                      formControlName="nombre"
+                      class="form-control" placeholder="Nombre del Alumno">
+                      <small 
+                        *ngIf="formReactivo.controls['nombre']?.invalid &&
+                        formReactivo.controls['nombre']?.touched
+                        "
+                     class="text-danger">Help text</small>
+                    </div>
+
+                    <div class="form-group">
+                          <label for="">Descripcion</label>
+                          <textarea 
+                          formControlName="desc"
+                          class="form-control"
+                            rows="4"></textarea>
+                      <small id="helpId" class="text-danger"
+                      *ngIf="formReactivo.controls['desc']?.invalid 
+                        &&
+                        formReactivo.controls['desc']?.touched
+                      "
+                      >Help text</small>
+                    </div>
+
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input  
+                        formControlName="aprobado"
+                        type="checkbox" class="form-check-input"
+                         >
+                        Aprobado
+                      </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block ">Enviar</button>
+
+                </form>
+
+                <!-- {{formReactivo | json }} -->
+
+
+            </td>
+        </tr>
+       
+    </tbody>
+</table>
+
+
+{{response | json }}

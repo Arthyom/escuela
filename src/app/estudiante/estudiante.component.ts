@@ -18,7 +18,7 @@ export class EstudianteComponent {
     /**
      *
      */
-    constructor( private http: HttpClient) {
+    constructor( ) {
        
         
     }
@@ -33,10 +33,7 @@ export class EstudianteComponent {
 
 
     deleteItem(item:Estudiante){
-        this.http.delete(
-            `estudiantes/${item.nombre}`
-
-        )
+        
     }
 
     editItem(item:Estudiante){
